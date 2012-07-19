@@ -34,6 +34,11 @@
                     $(option).hide();
                 }
             });
+            if (parent_sel == -1) {
+                $child.attr('disabled', 'disabled');
+            } else {
+                $child.removeAttr('disabled');
+            }
         }
         this.each(limit);
         this.each(function() {
