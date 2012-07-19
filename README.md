@@ -6,7 +6,7 @@ with them less awful.
 
 All visual modification falls back gracefully an ting.
 
-selimit
+SELIMIT
 -------
 
 This be a function to limit one dropdown based on another, using a
@@ -84,3 +84,32 @@ There is a third option we can pass - a selector for the "parent" that binds
     })
 
 Similar thing could be done for things like fieldsets, divs, etc.
+
+
+CHECKGROUP
+----------
+
+This simply converts a boring, ugly multiple select field into a beautiful
+group of checkboxes.
+
+Use it like:
+
+    $('select.blah').checkgroup();
+
+
+MULTIFILTER
+-----------
+
+Similar to above, however instead of checkboxes, this converts a multiple
+select into what appears to be an empty select box. When something is, however,
+selected in that box...another select box appears! If a select box is made
+blank (select the "default" item), or the X next to it is pressed, it
+disappears, leaving only the remaing selected items.
+
+Use it like:
+
+    $('select.blah').multifilter();
+
+
+OH BTW: Both this and checkgroup work totally A++ if there are already selected
+items for whatever selects they are replacing.
