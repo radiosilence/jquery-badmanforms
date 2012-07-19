@@ -113,3 +113,10 @@ Use it like:
 
 OH BTW: Both this and checkgroup work totally A++ if there are already selected
 items for whatever selects they are replacing.
+
+
+XEACH
+-----
+
+Minimal replacement for jQuery's "each" function which is probably about as
+fast as native foreach, however has jQuery like syntax.
