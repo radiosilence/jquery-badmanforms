@@ -58,12 +58,12 @@ Say the layout was a table like this:
 
     <tr>
         <td>
-            <select name="company">
+            <select name="id-0-company">
                 ...
             </select>
         </td>
         <td>
-            <select name="contact">
+            <select name="id-0-contact">
                 ...
             </select>
         </td>
@@ -76,9 +76,9 @@ There is a third option we can pass - a selector for the "parent" that binds
 "sets" of selects together like this:
 
     $(function() {
-        $('select[name=company]').selimit(
+        $('select[name*=-company]').selimit(
             employees,
-            'select[name=contact]',
+            'select[name*=-contact]',
             'tr'
         );
     })
