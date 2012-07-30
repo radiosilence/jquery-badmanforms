@@ -170,7 +170,7 @@
 
     $.fn.multifilter = function(o) {
         o = $.extend({
-            on: {}
+            onChange: function(event) {};
         }, o);
 
         this.xeach(function() {
@@ -190,10 +190,6 @@
 
             controls.on('change', 'select', multifilter_change);
             controls.on('click', 'a.kill', multifilter_kill);
-            if (o.on.change) {
-                controls.on('change', 'select', o.on.change);
-                controls.on('click', 'a.kill', o.on.change);
-            }
         });
     }
 
@@ -231,8 +227,7 @@
     }
 
 
-    var checkgroup_change = function(event) {
-        event.preventDefault();
+    var checkgroup_change = function(event, callback) {
         var check = $(event.currentTarget)
           , controls = $(event.delegateTarget)
           , orig = $('select', controls)
@@ -251,10 +246,11 @@
               return value != check.attr('v');
             }));
         }
+        callback(event);
     };
     $.fn.checkgroup = function(o) {
         o = $.extend({
-            on: {},
+            onChange: function(event) {},
         }, o);
         this.xeach(function() {
             var $this = $(this)
@@ -272,9 +268,9 @@
                     title, $this
                 ));
             });
-            controls.on('change', 'input', checkgroup_change);
-            $.each(o.on, function(k, v) {
-                controls.find('input').on(k, v);
+            controls.on('change', 'input', function(event) {
+                event.preventDefault();
+                checkgroup_change(event, o.onChange);
             });
         });
     };
