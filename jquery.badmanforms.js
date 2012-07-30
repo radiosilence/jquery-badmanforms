@@ -168,8 +168,10 @@
     }
 
 
-    $.fn.multifilter = function(config) {
-        config = config || {};
+    $.fn.multifilter = function(o) {
+        o = $.extend({
+            on: {}
+        }, o);
 
         this.xeach(function() {
             var $this = $(this)
@@ -188,6 +190,10 @@
 
             controls.on('change', 'select', multifilter_change);
             controls.on('click', 'a.kill', multifilter_kill);
+            if (o.on.change) {
+                controls.on('change', 'select', o.on.change);
+                controls.on('click', 'a.kill', o.on.change);
+            }
         });
     }
 
@@ -246,8 +252,10 @@
             }));
         }
     };
-    $.fn.checkgroup = function(config) {
-        config = config || {};
+    $.fn.checkgroup = function(o) {
+        o = $.extend({
+            on: {},
+        }, o);
         this.xeach(function() {
             var $this = $(this)
               , options = $('option', $this)
@@ -265,6 +273,9 @@
                 ));
             });
             controls.on('change', 'input', checkgroup_change);
+            $.each(o.on, function(k, v) {
+                controls.find('input').on(k, v);
+            });
         });
     };
 
