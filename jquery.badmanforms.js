@@ -202,7 +202,7 @@
         } else {
             var ch = '';
         }
-        check_id = 'check_' + element.attr('name') + '_' + value;
+        check_id = 'check_' + element.parent().attr('name') + '_' + value;
         var li = jQuery('<li/>');
         var input_attrs = {
             'v': value,
