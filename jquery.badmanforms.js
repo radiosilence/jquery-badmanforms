@@ -170,7 +170,7 @@
 
     $.fn.multifilter = function(o) {
         o = $.extend({
-            onChange: function(event) {};
+            onChange: function(event) {},
         }, o);
 
         this.xeach(function() {
